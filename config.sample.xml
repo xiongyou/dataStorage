@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 
+	在处理之前需要到数据库查看一下是否有重复innerID的商品，以及ActualID为空的商品
+	
+	以下步骤需要按顺序执行：
+	1、com.businessDataStorage.process.InsertStorePortal：插入店铺
+	2、com.businessDataStorage.process.UniqueProductPortal：将商品进行唯一性标记
+	3、com.businessDataStorage.process.InsertProductPortal：插入商品基本信息
+	4、com.businessDataStorage.process.InsertProductMonitorPortal：插入商品交易信息
+	 -->
+	<className>com.businessDataStorage.process.InsertProductMonitorPortal</className>
+	
+	 <!-- 配置源数据库与数据表 -->
+	<source>
+		<connectUrl>jdbc:mysql://*.*.*.*:3306/ebmis_db?useUnicode=true&amp;characterEncoding=UTF8</connectUrl>
+		<userName>root</userName>
+		<password>***</password>
+		<sourceTable>data_201712_month</sourceTable>
+	</source>
+	<!-- 配置目标数据库与数据表 -->
+	<destination>
+		<database>ebmis_db</database>
+		<storeTable>store_baseinfo</storeTable>
+		<productTable>product_baseinfo</productTable>
+		<productMonitorTable>productmonitor</productMonitorTable>
+	</destination>
+	<!-- 配置要处理的平台，多个平台用英文逗号,分隔 -->
+	<platformList>TaoBao,Tmall,CaiGuanJia,ChaoJiMeiWei,JingDong,JiZhiHui,ShangXiaoMeiGou,ShiJiGou,ShunFengYouXuan,SuNing,SuNingTSG,TaiJiYSG,TuoTuoGongShe,XiangManYuan,YiHaoDian,YouLeGou,YouMaTou</platformList> <!-- TaoBao,Tmall,JingDong -->
+	<startDate>2017-12-01</startDate>
+	<endDate>2017-12-31</endDate>
+</config>
