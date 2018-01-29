@@ -13,7 +13,7 @@
 	
 	 <!-- 配置源数据库与数据表 -->
 	<source>
-		<connectUrl>jdbc:mysql://*.*.*.*:3306/ebmis_db?useUnicode=true&amp;characterEncoding=UTF8</connectUrl>
+		<connectUrl>jdbc:mysql://localhost:3306/ebmis_db?useUnicode=true&amp;characterEncoding=UTF8</connectUrl>
 		<userName>root</userName>
 		<password>***</password>
 		<sourceTable>data_201712_month</sourceTable>
